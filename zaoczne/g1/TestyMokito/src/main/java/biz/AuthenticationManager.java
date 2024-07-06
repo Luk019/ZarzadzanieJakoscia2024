@@ -34,7 +34,8 @@ public class AuthenticationManager {
         User user = dao.findUserByName(userName);
         if (user==null) {
             history.logLoginFailure(null,"Zła nazwa użytkownika "+userName);
-            throw new UserUnnkownOrBadPasswordException("Bad Password");
+            throw new UserUnnkownOrBadPasswordException("Zła nazwa użytkownika");
+            // Bład zmiana komunikatu na Zła nazwa użytkownika
         }
         Password paswd = dao.findPasswordForUser(user);
         if (checkPassword(paswd,password)) {
